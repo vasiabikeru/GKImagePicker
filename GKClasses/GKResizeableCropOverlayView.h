@@ -22,7 +22,7 @@ typedef struct {
 @property (nonatomic, strong) UIView* contentView;
 @property (nonatomic, strong, readonly) GKCropBorderView *cropBorderView;
 
-@property (nonatomic, assign) bool enforceRatioLimits;
+@property (nonatomic, assign) BOOL enforceRatioLimits;
 @property (nonatomic, assign) float maxWidthRatio;
 @property (nonatomic, assign) float minWidthRatio;
 
