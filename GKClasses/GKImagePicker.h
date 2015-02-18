@@ -15,10 +15,10 @@
 @property (nonatomic, weak) id<GKImagePickerDelegate> delegate;
 @property (nonatomic, assign) CGSize cropSize; //default value is 320x320 (which is exactly the same as the normal imagepicker uses)
 @property (nonatomic, assign) BOOL resizeableCropArea;
-@property (nonatomic, assign) bool enforceRatioLimits;
 @property (nonatomic, assign) BOOL enforceRatioLimits;
 @property (nonatomic, assign) float maxWidthRatio;
 @property (nonatomic, assign) float minWidthRatio;
+@property (nonatomic, assign) BOOL useFrontCamera;
 
 - (void)showActionSheetOnViewController:(UIViewController *)viewController onPopoverFromView:(UIView *)popoverView;
 

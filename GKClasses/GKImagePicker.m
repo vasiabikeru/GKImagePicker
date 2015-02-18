@@ -154,7 +154,10 @@
     self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
     self.imagePickerController.delegate = self;
     self.imagePickerController.allowsEditing = NO;
-
+    
+    if (self.useFrontCamera){
+        self.imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+    }
     [self presentImagePickerController];
 #endif
 
