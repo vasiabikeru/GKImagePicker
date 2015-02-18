@@ -185,14 +185,15 @@
         newFrame.origin.y = _cropBorderView.frame.origin.y;
     }
     
-    //Enforce ratios
-    if (newFrame.size.width < newFrame.size.height * 0.3) {
-        newFrame = _cropBorderView.frame;
+    if (self.enforceRatioLimits){
+        if (newFrame.size.width < newFrame.size.height * self.minWidthRatio) {
+            newFrame = _cropBorderView.frame;
+        }
+        if (newFrame.size.width > newFrame.size.height * self.maxWidthRatio) {
+            newFrame = _cropBorderView.frame;
+        }
     }
-    if (newFrame.size.width > newFrame.size.height * 2.5) {
-        newFrame = _cropBorderView.frame;
-    }
-
+    
     if (newFrame.origin.x < 0){
         newFrame.size.width = _cropBorderView.frame.size.width + (_cropBorderView.frame.origin.x - self.superview.bounds.origin.x);
         newFrame.origin.x = 0;

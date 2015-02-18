@@ -17,6 +17,10 @@
 @property (nonatomic, assign) CGSize cropSize;
 @property (nonatomic, assign) BOOL resizableCropArea;
 
+@property (nonatomic, assign) bool enforceRatioLimits;
+@property (nonatomic, assign) float maxWidthRatio;
+@property (nonatomic, assign) float minWidthRatio;
+
 - (UIImage *)croppedImage;
 
 @end

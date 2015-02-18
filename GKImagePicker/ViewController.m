@@ -35,7 +35,7 @@
     self.imagePicker = [[GKImagePicker alloc] init];
     self.imagePicker.cropSize = CGSizeMake(320, 496);
     self.imagePicker.delegate = self;
-    
+
     [self.imagePicker showActionSheetOnViewController:self onPopoverFromView:btn];
 }
 
@@ -63,6 +63,9 @@
     self.imagePicker.cropSize = CGSizeMake(296, 300);
     self.imagePicker.delegate = self;
 	self.imagePicker.resizeableCropArea = YES;
+    imagePicker.enforceRatioLimits = YES;
+    imagePicker.maxWidthRatio = 2;
+    imagePicker.minWidthRatio = 0.5;
 
     [self.imagePicker showActionSheetOnViewController:self onPopoverFromView:btn];
 }

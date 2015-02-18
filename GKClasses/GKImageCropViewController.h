@@ -18,6 +18,9 @@
 @property (nonatomic, assign) CGSize cropSize; //size of the crop rect, default is 320x320
 @property (nonatomic, assign) BOOL resizeableCropArea; 
 @property (nonatomic, strong) id<GKImageCropControllerDelegate> delegate;
+@property (nonatomic, assign) bool enforceRatioLimits;
+@property (nonatomic, assign) float maxWidthRatio;
+@property (nonatomic, assign) float minWidthRatio;
 
 @end
 

@@ -80,8 +80,13 @@ static CGRect GKScaleRect(CGRect rect, CGFloat scale)
 - (void)setCropSize:(CGSize)cropSize{
     
     if (self.cropOverlayView == nil){
-        if(self.resizableCropArea)
-            self.cropOverlayView = [[GKResizeableCropOverlayView alloc] initWithFrame:self.bounds andInitialContentSize:CGSizeMake(cropSize.width, cropSize.height)];
+        if(self.resizableCropArea){
+            GKResizeableCropOverlayView *resizeableView = [[GKResizeableCropOverlayView alloc] initWithFrame:self.bounds andInitialContentSize:CGSizeMake(cropSize.width, cropSize.height)];
+            resizeableView.enforceRatioLimits = self.enforceRatioLimits;
+            resizeableView.maxWidthRatio = self.maxWidthRatio;
+            resizeableView.minWidthRatio = self.minWidthRatio;
+            self.cropOverlayView = resizeableView;
+        }
         else
             self.cropOverlayView = [[GKImageCropOverlayView alloc] initWithFrame:self.bounds];
         

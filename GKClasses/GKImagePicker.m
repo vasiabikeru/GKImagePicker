@@ -69,6 +69,10 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
 
     GKImageCropViewController *cropController = [[GKImageCropViewController alloc] init];
+    cropController.enforceRatioLimits = self.enforceRatioLimits;
+    cropController.maxWidthRatio = self.maxWidthRatio;
+    cropController.minWidthRatio = self.minWidthRatio;
+    
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
     cropController.preferredContentSize = picker.preferredContentSize;
 #else
