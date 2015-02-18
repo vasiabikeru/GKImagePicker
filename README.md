@@ -1,8 +1,8 @@
 ### GKImagePicker 
 
-This fork is a minor update to [@pixelshipper's](http://github.com/pixelshipper) [fork](https://github.com/pixelshipper/GKImagePicker) of [GKImagePicker](https://github.com/gekitz/GKImagePicker). It corrects an issue with iPhone 6 devices, and allows the developer to set ratio limits on the resizable crop size.
+This fork is a minor update to [@pixelshipper's fork](https://github.com/pixelshipper/GKImagePicker) of [GKImagePicker](https://github.com/gekitz/GKImagePicker). It corrects an issue with iPhone 6 devices, and allows the developer to set ratio limits on the resizable crop size.
 
-Original description:
+**Original description:**
 
 A fork of [GKImagePicker](https://github.com/gekitz/GKImagePicker) by [@gekitz](http://www.twitter.com/gekitz), taking off in a slightly different tangent. Notable changes to it are:
 - Utilizes an image cropper similar to Apple's own iOS 7 redesign
