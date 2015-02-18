@@ -35,7 +35,7 @@
     self.imagePicker = [[GKImagePicker alloc] init];
     self.imagePicker.cropSize = CGSizeMake(320, 496);
     self.imagePicker.delegate = self;
-    imagePicker.useFrontCamera = YES;
+    imagePicker.useFrontCameraAsDefault = YES;
 
     [self.imagePicker showActionSheetOnViewController:self onPopoverFromView:btn];
 }
@@ -67,7 +67,7 @@
     imagePicker.enforceRatioLimits = YES;
     imagePicker.maxWidthRatio = 2;
     imagePicker.minWidthRatio = 0.5;
-    imagePicker.useFrontCamera = YES;
+    imagePicker.useFrontCameraAsDefault = YES;
 
     [self.imagePicker showActionSheetOnViewController:self onPopoverFromView:btn];
 }

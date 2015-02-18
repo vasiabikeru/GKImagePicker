@@ -18,7 +18,7 @@
 @property (nonatomic, assign) BOOL enforceRatioLimits;
 @property (nonatomic, assign) float maxWidthRatio;
 @property (nonatomic, assign) float minWidthRatio;
-@property (nonatomic, assign) BOOL useFrontCamera;
+@property (nonatomic, assign) BOOL useFrontCameraAsDefault;
 
 - (void)showActionSheetOnViewController:(UIViewController *)viewController onPopoverFromView:(UIView *)popoverView;
 

@@ -155,7 +155,7 @@
     self.imagePickerController.delegate = self;
     self.imagePickerController.allowsEditing = NO;
     
-    if (self.useFrontCamera){
+    if (self.useFrontCameraAsDefault){
         self.imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
     }
     [self presentImagePickerController];
