@@ -254,6 +254,8 @@ static CGRect GKScaleRect(CGRect rect, CGFloat scale)
         (based on image's resolution), to prevent pixelation. We simply have to deteremine the
         max zoom scale and place it here
      */
+    self.scrollView.minimumZoomScale = CGRectGetWidth(self.scrollView.frame) / CGRectGetWidth(self.imageView.frame);
+
     [self.scrollView setContentOffset:CGPointMake((factoredWidth - size.width) * 0.5, (factoredHeight - size.height) * 0.5)];
     [self.scrollView setZoomScale:1.0];
 }
