@@ -40,7 +40,19 @@
 
 
 - (void)_actionCancel{
-    [self.navigationController popViewControllerAnimated:YES];
+    UIViewController *parentViewController = self.parentViewController;
+    if ([parentViewController isKindOfClass:[UIImagePickerController class]]){
+        UIImagePickerController *picker = (UIImagePickerController *)parentViewController;
+        if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }
+        else {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 
