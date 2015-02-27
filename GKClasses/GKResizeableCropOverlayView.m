@@ -186,10 +186,12 @@
     }
     
     if (self.enforceRatioLimits){
-        if (newFrame.size.width < newFrame.size.height * self.minWidthRatio) {
+        CGFloat newCorrectedWidth = newFrame.size.width - (2 * kBorderCorrectionValue);
+        CGFloat newCorrectedHeight = newFrame.size.height - (2 * kBorderCorrectionValue);
+        if (newCorrectedWidth - (2*kBorderCorrectionValue) < newCorrectedHeight * self.minWidthRatio) {
             newFrame = _cropBorderView.frame;
         }
-        if (newFrame.size.width > newFrame.size.height * self.maxWidthRatio) {
+        if (newCorrectedWidth > newCorrectedHeight * self.maxWidthRatio) {
             newFrame = _cropBorderView.frame;
         }
     }
