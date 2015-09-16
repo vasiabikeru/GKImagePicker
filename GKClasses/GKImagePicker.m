@@ -101,21 +101,48 @@
 {
     self.presentingViewController = viewController;
     self.popoverView = popoverView;
+    NSString *fromCameraString = NSLocalizedString(@"Image from Camera", @"Image from Camera");
+    NSString *fromLibraryString = NSLocalizedString(@"Image from Library", @"Image from Library");
+    NSString *cancelTitle = NSLocalizedString(@"Cancel", @"Cancel");
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:(id)self
-                                                    cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:NSLocalizedString(@"Image from Camera", @"Image from Camera"), NSLocalizedString(@"Image from Library", @"Image from Library"), nil];
-    actionSheet.delegate = self;
-    
-    if (UIUserInterfaceIdiomPad == UI_USER_INTERFACE_IDIOM()) {
-        [actionSheet showFromRect:self.popoverView.frame inView:self.presentingViewController.view animated:YES];
-    } else {
-        if (self.presentingViewController.navigationController.toolbar) {
-            [actionSheet showFromToolbar:self.presentingViewController.navigationController.toolbar];
+    if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        UIAlertAction *fromCameraAction = [UIAlertAction actionWithTitle:fromCameraString style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self showCameraImagePicker];
+        }];
+        
+        UIAlertAction *fromLibraryAction = [UIAlertAction actionWithTitle:fromLibraryString style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self showGalleryImagePicker];
+        }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:fromCameraAction];
+        [alertController addAction:fromLibraryAction];
+        
+        [viewController presentViewController:alertController animated:YES completion:^{
+            
+        }];
+    }
+    else {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                 delegate:(id)self
+                                                        cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:NSLocalizedString(@"Image from Camera", @"Image from Camera"), NSLocalizedString(@"Image from Library", @"Image from Library"), nil];
+        actionSheet.delegate = self;
+        
+        if (UIUserInterfaceIdiomPad == UI_USER_INTERFACE_IDIOM()) {
+            [actionSheet showFromRect:self.popoverView.frame inView:self.presentingViewController.view animated:YES];
         } else {
-            [actionSheet showInView:self.presentingViewController.view];
+            if (self.presentingViewController.navigationController.toolbar) {
+                [actionSheet showFromToolbar:self.presentingViewController.navigationController.toolbar];
+            } else {
+                [actionSheet showInView:self.presentingViewController.view];
+            }
         }
     }
 }
