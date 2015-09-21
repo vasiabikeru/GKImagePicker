@@ -30,7 +30,7 @@
 
 - (id)init{
     if (self = [super init]) {
-        
+        self.cropImage = YES;
         self.cropSize = CGSizeMake(320, 320);
         self.resizeableCropArea = NO;
     }
@@ -62,8 +62,13 @@
     
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    if (!_cropImage) {
+        [self imageCropController:nil didFinishWithCroppedImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
+        
+        return;
+    }
+    
     GKImageCropViewController *cropController = [[GKImageCropViewController alloc] init];
     cropController.enforceRatioLimits = self.enforceRatioLimits;
     cropController.maxWidthRatio = self.maxWidthRatio;

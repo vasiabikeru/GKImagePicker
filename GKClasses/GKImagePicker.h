@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @protocol GKImagePickerDelegate;
 
 @interface GKImagePicker : NSObject
 
 @property (nonatomic, weak) id<GKImagePickerDelegate> delegate;
+@property (nonatomic, assign) BOOL cropImage;
 @property (nonatomic, assign) CGSize cropSize; //default value is 320x320 (which is exactly the same as the normal imagepicker uses)
 @property (nonatomic, assign) BOOL resizeableCropArea;
 @property (nonatomic, assign) BOOL enforceRatioLimits;
